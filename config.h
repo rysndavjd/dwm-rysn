@@ -94,10 +94,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_z,      focusstack,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_s,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_q,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_s,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_q,      rotatestack,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_s,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_q,      incnmaster,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_s,      rotatestack,    {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_q,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_q,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_s,      setmfact,       {.f = +0.05} },
 //	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -123,7 +123,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_Escape,      quit,           {0} },
 };
 
 /* button definitions */
