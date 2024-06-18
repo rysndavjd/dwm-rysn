@@ -25,16 +25,11 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"/usr/bin/feh", "--bg-scale", "/home/rysndavjd/.dwm/detroitBecomeHumanBackground.png", NULL,
-	"if", "pgrep", "nm-applet;", "then", "pkill", "nm-applet;", "fi", NULL,
-	"if", "pgrep","blueman-applet;", "then", "pkill", "blueman-applet;", "fi", NULL,
-	"if", "pgrep","pasystray;", "then", "pkill", "pasystray;", "fi", NULL,
-	"/usr/bin/xrdb", "-merge", "/home/rysndavjd/.Xresources", NULL,
-	"/usr/libexec/polkit-gnome-authentication-agent-1", NULL,
-	"/usr/bin/nm-applet", NULL,
-	"/usr/bin/blueman-applet", NULL,
-	"/usr/bin/pasystray", NULL,
-	//"/usr/bin/slstatus", NULL,
+	"bash","/home/rysndavjd/.dwm/feh.sh", NULL,
+	"bash","/home/rysndavjd/.dwm/nm-applet.sh", NULL,
+	"bash","/home/rysndavjd/.dwm/blueman-applet.sh", NULL,
+	"bash","/home/rysndavjd/.dwm/pasystray.sh", NULL,
+	"bash","/home/rysndavjd/.dwm/polkit-gnome-authentication-agent.sh", NULL,
 	"bash", "/home/rysndavjd/.dwm/time.sh", NULL,
 	NULL /* terminate */
 };
