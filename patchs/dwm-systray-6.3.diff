@@ -316,7 +316,9 @@ index a96f33c..941c1c0 100644
  	Atom da, atom = None;
  
 -	if (XGetWindowProperty(dpy, c->win, prop, 0L, sizeof atom, False, XA_ATOM,
-+	/* FIXME getatomprop should return the number of items and a pointer to
++	
+
+
 +	 * the stored data instead of this workaround */
 +	Atom req = XA_ATOM;
 +	if (prop == xatom[XembedInfo])

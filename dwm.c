@@ -553,11 +553,13 @@ cleanup(void)
 	XUngrabKey(dpy, AnyKey, AnyModifier, root);
 	while (mons)
 		cleanupmon(mons);
+	
 	if (showsystray) {
 		XUnmapWindow(dpy, systray->win);
 		XDestroyWindow(dpy, systray->win);
 		free(systray);
 	}
+
     for (i = 0; i < CurLast; i++)
 		drw_cur_free(drw, cursor[i]);
 	for (i = 0; i < LENGTH(colors); i++)
@@ -639,7 +641,6 @@ if (showsystray && cme->window == systray->win && cme->message_type == netatom[N
 		}
 		return;
 	}
-
 
 	if (!c)
 		return;
@@ -1257,6 +1258,7 @@ maprequest(XEvent *e)
 		resizebarwin(selmon);
 		updatesystray();
 	}
+
 	if (!XGetWindowAttributes(dpy, ev->window, &wa))
 		return;
 	if (wa.override_redirect)
@@ -1884,8 +1886,8 @@ sigchld(int unused)
 void
 spawn(const Arg *arg)
 {
-	if (arg->v == dmenucmd)
-		dmenumon[0] = '0' + selmon->num;
+	//if (arg->v == dmenucmd)
+	//	dmenumon[0] = '0' + selmon->num;
 	if (fork() == 0) {
 		if (dpy)
 			close(ConnectionNumber(dpy));
@@ -2283,9 +2285,8 @@ updatestatus(void)
 {
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
 		strcpy(stext, "dwm-"VERSION);
-		updatesystray();
+	updatesystray();
 }
-
 
 void
 updatesystrayicongeom(Client *i, int w, int h)
