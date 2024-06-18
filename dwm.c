@@ -227,7 +227,7 @@ static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
-static void setmfact(const Arg *arg);
+//static void setmfact(const Arg *arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
@@ -235,7 +235,7 @@ static void sigchld(int unused);
 static void spawn(const Arg *arg);
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
-static void tagmon(const Arg *arg);
+//static void tagmon(const Arg *arg);
 static void tile(Monitor *);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -1742,6 +1742,7 @@ setlayout(const Arg *arg)
 }
 
 /* arg > 1.0 will set mfact absolutely */
+/*
 void
 setmfact(const Arg *arg)
 {
@@ -1755,6 +1756,7 @@ setmfact(const Arg *arg)
 	selmon->mfact = selmon->pertag->mfacts[selmon->pertag->curtag] = f;
 	arrange(selmon);
 }
+*/
 
 void
 setup(void)
@@ -1916,6 +1918,7 @@ tag(const Arg *arg)
 	}
 }
 
+/*
 void
 tagmon(const Arg *arg)
 {
@@ -1923,6 +1926,7 @@ tagmon(const Arg *arg)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
+*/
 
 void
 tile(Monitor *m)
