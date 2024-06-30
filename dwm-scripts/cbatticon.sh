@@ -6,17 +6,17 @@ endsh() {
     then
         exit 1
     else
-       	pkill nm-applet
+       	pkill cbatticon
         exit 0
     fi
 }
 trap endsh EXIT
 
-if ! command -v nm-applet &> /dev/null
+if ! command -v cbatticon &> /dev/null
 then
     endsh "notFound"
 else
-    nm-applet
+    cbatticon
 fi
 
 

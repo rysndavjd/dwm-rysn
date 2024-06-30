@@ -7,8 +7,8 @@ endsh() {
         echo "feh does not exist"
         exit 1
     else
-	echo "killed feh"
        	pkill feh
+        exit 0
     fi
 }
 trap endsh EXIT
@@ -17,7 +17,6 @@ if ! command -v feh &> /dev/null
 then
     endsh "notFound"
 else
-    echo "started feh"
     feh --bg-scale /home/rysndavjd/.dwm/detroitBecomeHumanBackground.png
 fi
 
