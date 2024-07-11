@@ -85,12 +85,14 @@ static const char *backlightinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklig
 static const char *backlightdec[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklight.sh", "dec", NULL };
 static const char *volumeinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "inc", NULL };
 static const char *volumedec[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "dec", NULL };
+static const char *lock[] = { "/bin/sh", "/home/rysndavjd/.dwm/slock.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 //	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },	
 	{ MODKEY,             			XK_F7, spawn,          {.v = extdisplay } },
 	{ MODKEY,             			XK_F6, spawn,          {.v = backlightinc } },
 	{ MODKEY,             			XK_F5, spawn,          {.v = backlightdec } },	
