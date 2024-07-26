@@ -85,6 +85,7 @@ static const char *backlightinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklig
 static const char *backlightdec[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklight.sh", "dec", NULL };
 static const char *volumeinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "inc", NULL };
 static const char *volumedec[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "dec", NULL };
+static const char *volumemute[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "mute", NULL };
 static const char *lock[] = { "/bin/sh", "/home/rysndavjd/.dwm/slock.sh", NULL };
 
 static const Key keys[] = {
@@ -98,6 +99,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_F5, spawn,          {.v = backlightdec } },	
 	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
+	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },		
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
