@@ -87,12 +87,14 @@ static const char *volumeinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", 
 static const char *volumedec[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "dec", NULL };
 static const char *volumemute[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "mute", NULL };
 static const char *lock[] = { "/bin/sh", "/home/rysndavjd/.dwm/slock.sh", NULL };
+static const char *flameshot[] = { "/bin/sh", "/home/rysndavjd/.dwm/flameshot.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 //	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
 	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },	
 	{ MODKEY,             			XK_F7, spawn,          {.v = extdisplay } },
 	{ MODKEY,             			XK_F6, spawn,          {.v = backlightinc } },
