@@ -1,1 +1,1 @@
-config-laptop.h
+config-desktop.h
