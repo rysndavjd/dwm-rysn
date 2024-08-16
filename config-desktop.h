@@ -79,12 +79,16 @@ static const Layout layouts[] = {
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
+static const char *flameshot[] = { "/bin/sh", "/home/rysndavjd/.dwm/flameshot.sh", NULL };
+static const char *lock[] = { "/bin/sh", "/home/rysndavjd/.dwm/slock.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 //	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
+	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },	
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
