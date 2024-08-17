@@ -40,16 +40,13 @@ install: all
 	mkdir -p ${DESTDIR}${MANPREFIX}/man1
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
-	mkdir -p ${HELPERPREFIX}/dwm
-	mkdir -p /usr/share/xsessions/
-	test -f /usr/share/xsessions/dwm.desktop || install -Dm644 dwm.desktop /usr/share/xsessions/
-	cp -fr dwm-scripts/* ${HELPERPREFIX}/dwm
-	chmod 755 ${HELPERPREFIX}/dwm/*
+	mkdir -p ${DESTDIR}${HELPERPREFIX}
+	cp -fr dwm-scripts/* ${DESTDIR}${HELPERPREFIX}
+	chmod 755 ${DESTDIR}${HELPERPREFIX}/*
 
 uninstall:
 	rm -fr ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
-		${HELPERPREFIX}/dwm
-		${DESTDIR}${PREFIX}/share/xsession/dwm.desktop
+		${HELPERPREFIX}
 
 .PHONY: all options clean release install uninstall
