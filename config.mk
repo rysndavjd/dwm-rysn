@@ -1,5 +1,4 @@
-# dwm version
-VERSION = 6.3
+VERSION = 1.1
 USER = rysndavjd
 
 # Customize below to fit your system
