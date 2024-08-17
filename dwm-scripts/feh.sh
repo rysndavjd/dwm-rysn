@@ -17,7 +17,7 @@ if ! command -v feh &> /dev/null
 then
     endsh "notFound"
 else
-    feh --bg-scale /home/rysndavjd/.dwm/detroitBecomeHumanBackground.png
+    feh --bg-scale /usr/share/dwm/detroitBecomeHumanBackground.png
 fi
 
 
