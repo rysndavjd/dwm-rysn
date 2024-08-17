@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+//laptop
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -25,13 +25,13 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"bash","/home/rysndavjd/.dwm/feh.sh", NULL,
-	"bash","/home/rysndavjd/.dwm/nm-applet.sh", NULL,
-	"bash","/home/rysndavjd/.dwm/blueman-applet.sh", NULL,
-	"bash","/home/rysndavjd/.dwm/pasystray.sh", NULL,
-	"bash","/home/rysndavjd/.dwm/polkit-gnome-authentication-agent.sh", NULL,
-	"bash", "/home/rysndavjd/.dwm/cbatticon.sh", NULL,
-	"bash", "/home/rysndavjd/.dwm/time.sh", NULL,
+	"bash","/usr/share/dwm/feh.sh", NULL,
+	"bash","/usr/share/dwm/nm-applet.sh", NULL,
+	"bash","/usr/share/dwm/blueman-applet.sh", NULL,
+	"bash","/usr/share/dwm/pasystray.sh", NULL,
+	"bash","/usr/share/dwm/polkit-gnome-authentication-agent.sh", NULL,
+	"bash", "/usr/share/dwm/cbatticon.sh", NULL,
+	"bash", "/usr/share/dwm/time.sh", NULL,
 	NULL /* terminate */
 };
 
@@ -58,8 +58,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[T]=",      tile },    /* first entry is default */
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
 
@@ -80,14 +80,14 @@ static const Layout layouts[] = {
 //static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *extdisplay[]  = { "kitty", "/home/rysndavjd/.dwm/startExtDisplay.sh", NULL };
-static const char *backlightinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklight.sh", "inc", NULL };
-static const char *backlightdec[]  = { "/bin/sh", "/home/rysndavjd/.dwm/xbacklight.sh", "dec", NULL };
-static const char *volumeinc[]  = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "inc", NULL };
-static const char *volumedec[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "dec", NULL };
-static const char *volumemute[] = { "/bin/sh", "/home/rysndavjd/.dwm/pactl.sh", "mute", NULL };
-static const char *lock[] = { "/bin/sh", "/home/rysndavjd/.dwm/slock.sh", NULL };
-static const char *flameshot[] = { "/bin/sh", "/home/rysndavjd/.dwm/flameshot.sh", NULL };
+static const char *extdisplay[]  = { "kitty", "/usr/share/dwm/startExtDisplay.sh", NULL };
+static const char *backlightinc[]  = { "/bin/sh", "/usr/share/dwm/xbacklight.sh", "inc", NULL };
+static const char *backlightdec[]  = { "/bin/sh", "/usr/share/dwm/xbacklight.sh", "dec", NULL };
+static const char *volumeinc[]  = { "/bin/sh", "/usr/share/dwm/pactl.sh", "inc", NULL };
+static const char *volumedec[] = { "/bin/sh", "/usr/share/dwm/pactl.sh", "dec", NULL };
+static const char *volumemute[] = { "/bin/sh", "/usr/share/dwm/pactl.sh", "mute", NULL };
+static const char *lock[] = { "/bin/sh", "/usr/share/dwm/slock.sh", NULL };
+static const char *flameshot[] = { "/bin/sh", "/usr/share/dwm/flameshot.sh", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
