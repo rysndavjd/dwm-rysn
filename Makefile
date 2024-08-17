@@ -19,22 +19,19 @@ options:
 
 ${OBJ}: config.h config.mk
 
-config.h:
-	cp config.def.h $@
-
 dwm: ${OBJ}
 	${CC} -o $@ ${OBJ} ${LDFLAGS}
 
 clean:
 	rm -f dwm ${OBJ} dwm-${VERSION}.tar.gz
 
-dist: clean
-	mkdir -p dwm-${VERSION}
-	cp -R LICENSE Makefile README config.def.h config.mk\
-		dwm.1 drw.h util.h ${SRC} dwm.png transient.c dwm-${VERSION}
-	tar -cf dwm-${VERSION}.tar dwm-${VERSION}
-	gzip dwm-${VERSION}.tar
-	rm -rf dwm-${VERSION}
+release: clean
+	mkdir -p dwm-rysn-${VERSION}
+	cp -R LICENSE Makefile README config-*.h config.mk patchs dwm-scripts\
+		dwm.1 drw.h util.h ${SRC} dwm.png transient.c link.sh dwm-rysn-${VERSION}
+	tar -cf dwm-rysn-${VERSION}.tar dwm-rysn-${VERSION}
+	gzip dwm-rysn-${VERSION}.tar
+	rm -rf dwm-rysn-${VERSION}
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
