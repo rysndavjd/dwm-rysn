@@ -1,9 +1,9 @@
 VERSION = 1.2
 
 # paths
-PREFIX = /usr
+PREFIX ?= /usr/bin
 MANPREFIX = ${PREFIX}/share/man
-HELPERPREFIX = /usr/share
+HELPERPREFIX ?= /usr/share
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib
