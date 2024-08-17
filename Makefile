@@ -41,6 +41,8 @@ install: all
 	sed "s/VERSION/${VERSION}/g" < dwm.1 > ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	chmod 644 ${DESTDIR}${MANPREFIX}/man1/dwm.1
 	mkdir -p ${HELPERPREFIX}/.dwm
+	mkdir -p /usr/share/xsessions/
+	test -f /usr/share/xsessions/dwm-rysn.desktop || install -Dm644 dwm-rysn.desktop /usr/share/xsessions/
 	cp -fr dwm-scripts/* ${HELPERPREFIX}/.dwm
 	chown ${USER}: ${HELPERPREFIX}/.dwm/ -R
 	chmod 755 ${HELPERPREFIX}/.dwm/*
@@ -49,5 +51,6 @@ uninstall:
 	rm -fr ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1\
 		${HELPERPREFIX}/.dwm
+		${DESTDIR}${PREFIX}/share/xsession/dwm.desktop
 
-.PHONY: all options clean dist install uninstall
+.PHONY: all options clean release install uninstall
