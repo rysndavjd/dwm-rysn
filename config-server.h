@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"bash", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/", NULL,
+	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
 	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
 	"bash", "/usr/share/dwm-rysn/time.sh", NULL,
 	NULL /* terminate */
@@ -82,6 +82,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
+	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
