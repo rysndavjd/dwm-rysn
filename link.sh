@@ -1,18 +1,12 @@
 #!/bin/bash
 
-echo "Enter config to link to (desktop, server, laptop)"
-read config
+config="desktop laptop server"
 
-if [[ $config == "desktop" ]] ; then
-    echo "Config chosen is desktop."
-    ln -sr config-desktop.h config.h
-    exit 0
-elif [[ $config == "server" ]] ; then
-    echo "Config chosen is desktop."
-    ln -sr config-server.h config.h
-    exit 0
-elif [[ $config == "laptop" ]] ; then
-    echo "Config chosen is desktop."
-    ln -sr config-laptop.h config.h
-    exit 0
-fi
+echo "Enter config to link to ($config)"
+read chose
+
+for num in $config ; do 
+    if [ "$num" = "$chose" ] ; then
+        ln -srf config-$chose.h config.h
+    fi
+done

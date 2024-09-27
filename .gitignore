@@ -2,4 +2,5 @@ drw.o
 dwm.o
 util.o
 dwm
+.vscode
 config.h
