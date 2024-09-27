@@ -43,8 +43,6 @@ install: all
 	mkdir -p ${DESTDIR}${HELPERPREFIX}
 	cp -fr dwm-scripts/* ${DESTDIR}${HELPERPREFIX}
 	chmod 755 ${DESTDIR}${HELPERPREFIX}/* -R
-	touch ${DESTDIR}${HELPERPREFIX}/fehtmp 
-	chmod 666 ${DESTDIR}${HELPERPREFIX}/fehtmp 
 
 uninstall:
 	rm -fr ${DESTDIR}${PREFIX}/bin/dwm\
