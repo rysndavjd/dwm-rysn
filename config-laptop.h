@@ -25,18 +25,18 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"bash","/usr/share/dwm/feh.sh", NULL,
-	"bash","/usr/share/dwm/nm-applet.sh", NULL,
-	"bash","/usr/share/dwm/blueman-applet.sh", NULL,
-	"bash","/usr/share/dwm/pasystray.sh", NULL,
-	"bash","/usr/share/dwm/polkit-gnome-authentication-agent.sh", NULL,
-	"bash", "/usr/share/dwm/cbatticon.sh", NULL,
-	"bash", "/usr/share/dwm/time.sh", NULL,
+	"bash", "/usr/share/dwm-rysn/feh.sh", NULL,
+	"/usr/bin/nm-applet", NULL,
+	"/usr/bin/blueman-applet", NULL,
+	"/usr/bin/pasystray", NULL,
+	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
+	"/usr/bin/cbatticon", NULL,
+	"bash", "/usr/share/dwm-rysn/time.sh", NULL,
 	NULL /* terminate */
 };
 
 /* tagging */
-static const char *tags[] = { "", "", "󰈹", "4", "5"};
+static const char *tags[] = { "", "󰈹", "", "4", "5", "6"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -45,20 +45,19 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-//	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "librewolf",NULL,       NULL,       1 << 2,       0,           0,           -1 },
-	{ "Code",     NULL,       NULL,       1 << 1,       0,           0,           -1 },
+	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
+	{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
 };
 
 /* layout(s) */
-static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.5; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[T]=",      tile },    /* first entry is default */
+	{ "[]=",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 };
@@ -76,22 +75,19 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-//static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *extdisplay[]  = { "kitty", "/usr/share/dwm/startExtDisplay.sh", NULL };
-static const char *backlightinc[]  = { "/bin/sh", "/usr/share/dwm/xbacklight.sh", "inc", NULL };
-static const char *backlightdec[]  = { "/bin/sh", "/usr/share/dwm/xbacklight.sh", "dec", NULL };
-static const char *volumeinc[]  = { "/bin/sh", "/usr/share/dwm/pactl.sh", "inc", NULL };
-static const char *volumedec[] = { "/bin/sh", "/usr/share/dwm/pactl.sh", "dec", NULL };
-static const char *volumemute[] = { "/bin/sh", "/usr/share/dwm/pactl.sh", "mute", NULL };
-static const char *lock[] = { "/bin/sh", "/usr/share/dwm/slock.sh", NULL };
-static const char *flameshot[] = { "/bin/sh", "/usr/share/dwm/flameshot.sh", NULL };
+static const char *extdisplay[]  = { "kitty", "/usr/share/dwm-rysn/startExtDisplay.sh", NULL };
+static const char *backlightinc[]  = { "/usr/bin/xbacklight", "-inc", "5", NULL };
+static const char *backlightdec[]  = { "/usr/bin/xbacklight", "-dec", "5", NULL };
+static const char *volumeinc[]  = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "inc", NULL };
+static const char *volumedec[] = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "dec", NULL };
+static const char *volumemute[] = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "mute", NULL };
+static const char *lock[] = { "/usr/bin/slock", NULL };
+static const char *flameshot[] = { "/usr/bin/flameshot", "gui", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-//	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
@@ -101,7 +97,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_F5, spawn,          {.v = backlightdec } },	
 	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
-	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },		
+	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
@@ -112,7 +108,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_q,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_s,      setmfact,       {.f = +0.05} },
-//	{ MODKEY,                       XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
@@ -124,8 +119,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_z,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_x, focusmon,       {.i = +1 } },
-	//{ MODKEY|ShiftMask,             XK_z,  tagmon,         {.i = -1 } },
-	//{ MODKEY|ShiftMask,             XK_x,  tagmon,         {.i = +1 } },
+	{ MODKEY|ControlMask,             XK_z,  tagmon,         {.i = -1 } },
+	{ MODKEY|ControlMask,             XK_x,  tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)

@@ -1,9 +1,9 @@
-VERSION = 1.2
+VERSION = 1.3
 
 # paths
 PREFIX ?= /usr
 MANPREFIX = ${PREFIX}/share/man
-HELPERPREFIX ?= ${PREFIX}/share/dwm
+HELPERPREFIX ?= ${PREFIX}/share/dwm-rysn
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib

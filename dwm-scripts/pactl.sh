@@ -1,12 +1,8 @@
 #!/bin/sh
 
-endsh() {
-    exit 1
-}
-
 if ! command -v pactl &> /dev/null
 then
-    endsh
+    exit 1
 else
     if [[ "$1" == "inc" ]]
     then
