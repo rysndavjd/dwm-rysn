@@ -43,9 +43,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
-	{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,           1},
+	//{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
+	//{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
+	//{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
 };
 
 /* layout(s) */
@@ -94,14 +95,14 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
 	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
 	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
-	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
+	//{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_z,      focusstack,     {.i = -1 } },
 	{ MODKEY|ControlMask,           XK_s,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ControlMask,           XK_q,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_s,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_q,      rotatestack,    {.i = -1 } },
+	//{ MODKEY|ShiftMask,             XK_s,      rotatestack,    {.i = +1 } },
+	//{ MODKEY|ShiftMask,             XK_q,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_q,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_s,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
