@@ -95,7 +95,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
 	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
 	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
-	//{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
+	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_z,      focusstack,     {.i = -1 } },
