@@ -31,7 +31,7 @@ static const char *const autostart[] = {
 	"/usr/bin/pasystray", NULL,
 	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
 	"/usr/bin/cbatticon", NULL,
-	"bash", "/usr/share/dwm-rysn/time.sh", NULL,
+	"/usr/share/dwm-rysn/cpptime", NULL,
 	NULL /* terminate */
 };
 
@@ -44,9 +44,9 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
-	{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,           1},
+	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0},
+	{ "Code",     NULL,       NULL,       1 << 2,       0,           0},
 };
 
 /* layout(s) */

@@ -4,3 +4,4 @@ util.o
 dwm
 .vscode
 config.h
+cpptime
