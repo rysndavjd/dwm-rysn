@@ -3,7 +3,6 @@ VERSION = 1.4
 # paths
 PREFIX ?= /usr
 MANPREFIX = ${PREFIX}/share/man
-HELPERPREFIX ?= ${PREFIX}/share/dwm-rysn
 
 X11INC = /usr/X11R6/include
 X11LIB = /usr/X11R6/lib
@@ -28,10 +27,6 @@ CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VE
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
 CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -Os ${INCS} ${CPPFLAGS}
 LDFLAGS  = ${LIBS}
-
-# Solaris
-#CFLAGS = -fast ${INCS} -DVERSION=\"${VERSION}\"
-#LDFLAGS = ${LIBS}
 
 # compiler and linker
 CC = cc

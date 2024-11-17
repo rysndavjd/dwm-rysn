@@ -30,7 +30,7 @@ static const char *const autostart[] = {
 	"/usr/bin/blueman-applet", NULL,
 	"/usr/bin/pasystray", NULL,
 	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
-	"bash", "/usr/share/dwm-rysn/time.sh", NULL,
+	"/usr/share/dwm-rysn/cpptime", NULL,
 	NULL /* terminate */
 };
 
@@ -42,11 +42,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
+	/* class      instance    title       tags mask     iscentered   isfloating*/
 	{ "Gimp",     NULL,       NULL,       0,            0,           1},
-	//{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-	//{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
-	//{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
+	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0},
+	{ "Code",     NULL,       NULL,       1 << 2,       0,           0},
 };
 
 /* layout(s) */

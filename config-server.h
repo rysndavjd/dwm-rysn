@@ -27,7 +27,7 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
 	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
 	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
-	"bash", "/usr/share/dwm-rysn/time.sh", NULL,
+	"/usr/share/dwm-rysn/cpptime", NULL,
 	NULL /* terminate */
 };
 
@@ -39,10 +39,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            0,           1,           -1 },
-	{ "Librewolf",NULL,       NULL,       1 << 1,       0,           0,           -1 },
-	{ "Code",     NULL,       NULL,       1 << 2,       0,           0,           -1 },
+	/* class      instance    title       tags mask     iscentered   isfloating*/
+	{ "Gimp",     NULL,       NULL,       0,            0,           1},
+	{ "Librewolf",NULL,       NULL,       1 << 1,       0,           0},
+	{ "Code",     NULL,       NULL,       1 << 2,       0,           0},
 };
 
 /* layout(s) */
