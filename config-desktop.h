@@ -81,9 +81,9 @@ static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *flameshot[] = { "/usr/bin/flameshot", "gui", NULL };
 static const char *lock[] = { "/usr/bin/slock", NULL };
-static const char *volumeinc[]  = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "inc", NULL };
-static const char *volumedec[] = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "dec", NULL };
-static const char *volumemute[] = { "/bin/bash", "/usr/share/dwm-rysn/pactl.sh", "mute", NULL };
+static const char *volumeinc[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
+static const char *volumedec[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
+static const char *volumemute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
