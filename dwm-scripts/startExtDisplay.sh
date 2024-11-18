@@ -11,15 +11,16 @@ setRes () {
 }
 
 checkDisplay () {
-    xrandr --listmonitors --verbose | grep -q "$secondaryDisplay disconnected"
-    if [ $? == 1 ]
-    then
-        echo "$secondaryDisplay is connected"
-    else
+    if ! xrandr --listmonitors --verbose | grep -q "$secondaryDisplay" ; then
         clear
-        echo "$secondaryDisplay is disconnected"
+        echo "$secondaryDisplay does not exist."
         sleep 1
-        exit
+        exit 1
+    elif xrandr --listmonitors --verbose | grep -q "$secondaryDisplay disconnected" ; then
+        clear
+        echo "$secondaryDisplay is disconnected."
+        sleep 1
+        exit 1
     fi
 }
 
@@ -67,7 +68,6 @@ do
                 case $opt in
                     "1920x1080x60")
                         setRes "1920x1080" "60" "--left-of $mainDisplay"
-                        echo 'awesome.restart()' | awesome-client
                         exit
                         ;;
                     "custom")
