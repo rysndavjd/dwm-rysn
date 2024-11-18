@@ -28,6 +28,7 @@ ${DWM_OBJ}: config.mk
 
 cpptime:
 	${CXX} -o $@ ${CPPTIME_SRC} ${CXXFLAGS} ${CPPTIME_LDFLAGS}
+	strip $@ 
 
 dwm: ${DWM_OBJ} cpptime
 	${CC} -o $@ ${DWM_OBJ} ${DWM_LDFLAGS}
