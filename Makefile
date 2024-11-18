@@ -35,7 +35,7 @@ dwm: ${DWM_OBJ} cpptime
 
 clean:
 	rm -f cpptime 
-	rm -f dwm ${DWM_OBJ} dwm-${VERSION}.tar.gz
+	rm -f dwm ${DWM_OBJ} dwm-rysn-${VERSION}.tar.gz
 
 release: clean
 	mkdir -p dwm-rysn-${VERSION}
