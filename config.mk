@@ -1,4 +1,4 @@
-VERSION = 1.5
+VERSION = 1.5.1
 CPPTIME_VERSION = 0.2
 
 # paths
