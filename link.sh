@@ -1,6 +1,6 @@
 #!/bin/bash
 
-config="desktop laptop server"
+config="desktop laptop server mac"
 
 echo "Enter config to link to ($config)"
 read chose
