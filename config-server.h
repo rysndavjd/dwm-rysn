@@ -26,7 +26,6 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
-	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
 	"/usr/share/dwm-rysn/cpptime", NULL,
 	NULL /* terminate */
 };

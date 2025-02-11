@@ -30,7 +30,6 @@ static const char *const autostart[] = {
 	"/usr/bin/nm-applet", NULL,
 	"/usr/bin/blueman-applet", NULL,
 	"/usr/bin/pasystray", NULL,
-	"bash","/usr/share/dwm-rysn/polkit-gnome-authentication-agent.sh", NULL,
 	"/usr/bin/cbatticon", NULL,
 	"/usr/share/dwm-rysn/cpptime", NULL,
 	NULL /* terminate */
