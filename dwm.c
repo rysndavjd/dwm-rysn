@@ -2708,13 +2708,13 @@ int
 main(int argc, char *argv[])
 {
 	if (argc == 2 && !strcmp("-v", argv[1]))
-		die("dwm-"VERSION);
+		die("dwm-rysn-"VERSION);
 	else if (argc != 1)
-		die("usage: dwm [-v]");
+		die("usage: dwm-rysn [-v]");
 	if (!setlocale(LC_CTYPE, "") || !XSupportsLocale())
 		fputs("warning: no locale support\n", stderr);
 	if (!(dpy = XOpenDisplay(NULL)))
-		die("dwm: cannot open display");
+		die("dwm-rysn: cannot open display");
 	checkotherwm();
 	autostart_exec();
 	setup();
