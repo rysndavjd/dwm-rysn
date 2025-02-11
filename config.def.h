@@ -1,5 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
+//static const char *upbrightness[]   = { "xbacklight", "-inc", "10", NULL };
+//static const char *downbrightness[] = { "xbacklight", "-dec", "10", NULL };
+//{ 0, XF86XK_MonBrightnessUp,    spawn, {.v = upbrightness } },
+//{ 0, XF86XK_MonBrightnessDown,  spawn, {.v = downbrightness } },
+
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
