@@ -1,0 +1,9 @@
+xrandr --output HDMI-0 --dpi 92 --rate 74.97 --primary --mode 1920x1080 --pos 0x0
+wmname LG3D &
+xset -dpms s off s noblank s 0 0 s noexpose &
+xsettingsd &
+xrdb -merge /home/rysndavjd/.Xresources &
+pipewire &
+pipewire-pulse &
+wireplumber &
+dbus-launch --sh-syntax --exit-with-session dwm
