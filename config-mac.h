@@ -26,6 +26,7 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"dbus-update-activation-environment", "--all", NULL,
+	"xrandr", "--output", "eDP-1", "--dpi", "221.98"," --rate", "59.99", "--primary", "--mode", "2560x1600", "--pos", "0x0", NULL,
 	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
 	"/usr/bin/nm-applet", NULL,
 	"/usr/bin/blueman-applet", NULL,
@@ -121,7 +122,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,			    XK_f,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,			    XK_space,  togglefloating, {0} },
 	{ MODKEY|ControlMask,                       XK_f,      togglecanfocusfloating,   {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
