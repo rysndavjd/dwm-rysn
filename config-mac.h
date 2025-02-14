@@ -26,7 +26,6 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"dbus-update-activation-environment", "--all", NULL,
-	"xrandr", "--output", "eDP-1", "--dpi", "221.98"," --rate", "59.99", "--primary", "--mode", "2560x1600", "--pos", "0x0", NULL,
 	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
 	"/usr/bin/nm-applet", NULL,
 	"/usr/bin/blueman-applet", NULL,
