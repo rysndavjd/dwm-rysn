@@ -15,7 +15,7 @@ options:
 	@echo "LDFLAGS  = ${CPPTIME_LDFLAGS}"
 	@echo "CXX      = ${CXX}"
 	@echo ""
-	@echo dwm build options:
+	@echo dwm-rysn build options:
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${DWM_LDFLAGS}"
 	@echo "CC       = ${CC}"
@@ -48,8 +48,8 @@ release: clean
 
 install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
-	cp -f dwm ${DESTDIR}${PREFIX}/bin
-	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm
+	cp -f dwm ${DESTDIR}${PREFIX}/bin/dwm-rysn
+	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn
 	cp -fr dwm-scripts/* ${DESTDIR}${PREFIX}/share/dwm-rysn
 	cp -f cpptime ${DESTDIR}${PREFIX}/share/dwm-rysn/cpptime
