@@ -1,12 +1,24 @@
-use std::process::Command;
-use signal_hook::consts::signal::*;
+use std::{error::Error, thread, process::Command};
+use signal_hook::consts::signal::{SIGTERM, SIGINT, SIGQUIT};
 use signal_hook::iterator::Signals;
-use std::io::Error;
-use libc;
+use nix::sys::signal::{kill, Signal};
+use nix::unistd::Pid;
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>> {
+    let mut signals = Signals::new(&[
+        SIGTERM,
+        SIGINT,
+        SIGQUIT,
+    ])?;
 
-    let exec: Vec<&str> = vec!["ls", "-a", "\0", "ls", "-l", "\0", "sleep", "10", "\0"];
+    let signal_thread = thread::spawn(move || {
+        for sig in signals.forever() {
+            println!("Received signal {:?}", sig);
+            break;
+        }
+    });
+
+    let exec: Vec<&str> = vec!["sleep", "30", "\0", "sleep", "30", "\0", "sleep", "30", "\0"];
     let mut program: Vec<&str> = Vec::new();
     let mut pids: Vec<u32> = Vec::new();
 
@@ -32,5 +44,15 @@ fn main() {
         
     }
     println!("{:?}", pids);
+    signal_thread.join().expect("Failed to join signal_thread.");
+
+    for pidu32 in pids {
+        let pid = Pid::from_raw(pidu32 as i32);
+        match kill(pid, Signal::SIGTERM) {
+            Ok(_) => (),
+            Err(e) => eprintln!("Failed sending signal {}", e)
+        }
+    }
+    Ok(())
 }
 
