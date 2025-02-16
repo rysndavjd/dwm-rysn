@@ -19,6 +19,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     });
 
     let exec: Vec<&str> = vec!["sleep", "30", "\0", "sleep", "30", "\0", "sleep", "30", "\0"];
+    #[cfg(debug_assertions)]
+    println!("{:?}", exec);
     let mut program: Vec<&str> = Vec::new();
     let mut pids: Vec<u32> = Vec::new();
 
@@ -34,6 +36,7 @@ fn main() -> Result<(), Box<dyn Error>> {
                 } else {
                     println!("{} command didn't start", program[0]);
                 }
+                #[cfg(debug_assertions)]
                 println!("{:?}", program);
                 program.clear();
             },
@@ -43,6 +46,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
         
     }
+    #[cfg(debug_assertions)]
     println!("{:?}", pids);
     signal_thread.join().expect("Failed to join signal_thread.");
 
