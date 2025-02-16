@@ -58,7 +58,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "start-dwm-rysn"
+name = "startdwm-rysn"
 version = "0.1.0"
 dependencies = [
  "libc",
