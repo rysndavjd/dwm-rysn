@@ -85,7 +85,6 @@ static const char *lock[] = { "/usr/bin/slock", NULL };
 static const char *volumeinc[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
 static const char *volumedec[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
 static const char *volumemute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
-static const char *extdisplay[]  = { "kitty", "/usr/share/dwm-rysn/startExtDisplay.sh", NULL };
 static const char *backlightinc[]  = { "cpplighty", "--device", "apple-panel-bl", "--inc", "5", NULL };
 static const char *backlightdec[]  = { "cpplighty", "--device", "apple-panel-bl", "--dec", "5", NULL };
 static const char *kbbacklightinc[]  = { "cpplighty", "--device", "kbd_backlight", "--inc", "5", NULL };
@@ -97,10 +96,14 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
-	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
-	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
-	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
-	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
+	{ MODKEY,             			XK_F12, spawn,          {.v = volumeinc } },	
+	{ MODKEY,             			XK_F11, spawn,          {.v = volumedec } },		
+	{ MODKEY,             			XK_F10, spawn,          {.v = volumemute } },
+	{ MODKEY,             			XK_F3, spawn,          {.v = lock } },
+	{ MODKEY|ShiftMask,           	XK_F2, spawn,          {.v = kbbacklightinc } },
+	{ MODKEY|ShiftMask,           	XK_F1, spawn,          {.v = kbbacklightdec } },	
+	{ MODKEY,             			XK_F2, spawn,          {.v = backlightinc } },
+	{ MODKEY,             			XK_F1, spawn,          {.v = backlightdec } },	
 	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
 	// toggles
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
