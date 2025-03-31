@@ -2,4 +2,4 @@ xrandr --output HDMI-0 --rate 60 --primary --mode 1920x1080 --pos 0x0
 xset -dpms s off s noblank s 0 0 s noexpose &
 xsettingsd &
 xrdb -merge ~/.Xresources &
-exec dbus-launch --sh-syntax --exit-with-session dwm
+exec dbus-launch --sh-syntax --exit-with-session dwm-rysn

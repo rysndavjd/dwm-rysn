@@ -3,4 +3,4 @@ wmname LG3D &
 xset -dpms s off s noblank s 0 0 s noexpose &
 xsettingsd &
 xrdb -merge ~/.Xresources &
-exec dbus-launch --sh-syntax --exit-with-session dwm
+exec dbus-launch --sh-syntax --exit-with-session dwm-rysn
