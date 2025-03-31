@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-//laptop
+//Desktop
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -26,6 +26,8 @@ static const char *colors[][3]      = {
 
 static const char *const autostart[] = {
 	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
+	"/usr/share/dwm-rysn/audio.sh", NULL,
+	"/usr/share/dwm-rysn/polkit.sh", NULL,
 	"/usr/bin/nm-applet", NULL,
 	"/usr/bin/blueman-applet", NULL,
 	"/usr/bin/pasystray", NULL,
@@ -42,9 +44,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     iscentered   isfloating   monitor */
+	/* class      instance    title       tags mask     iscentered   isfloating*/
 	{ "Gimp",     NULL,       NULL,       0,            0,           1},
 	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0},
+	{ "firefox",NULL,       NULL,       1 << 1,       0,           0},
 	{ "Code",     NULL,       NULL,       1 << 2,       0,           0},
 };
 
@@ -77,52 +80,53 @@ static const Layout layouts[] = {
 /* commands */
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "kitty", NULL };
-static const char *extdisplay[]  = { "kitty", "/usr/share/dwm-rysn/startExtDisplay.sh", NULL };
-static const char *backlightinc[]  = { "/usr/bin/xbacklight", "-inc", "5", NULL };
-static const char *backlightdec[]  = { "/usr/bin/xbacklight", "-dec", "5", NULL };
+static const char *flameshot[] = { "/usr/bin/flameshot", "gui", NULL };
+static const char *lock[] = { "/usr/bin/slock", NULL };
 static const char *volumeinc[]  = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%", NULL };
 static const char *volumedec[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%", NULL };
 static const char *volumemute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", "toggle", NULL };
-static const char *lock[] = { "/usr/bin/slock", NULL };
-static const char *flameshot[] = { "/usr/bin/flameshot", "gui", NULL };
+static const char *extdisplay[]  = { "kitty", "/usr/share/dwm-rysn/startExtDisplay.sh", NULL };
+static const char *backlightinc[]  = { "/usr/bin/cpplighty", "--device", "/sys/class/backlight/intel_backlight", "--inc", "5", NULL };
+static const char *backlightdec[]  = { "/usr/bin/cpplighty", "--device", "/sys/class/backlight/intel_backlight", "--dec", "5", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
+	// Spawn functions
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
-	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },	
-	{ MODKEY,             			XK_F7, spawn,          {.v = extdisplay } },
-	{ MODKEY,             			XK_F6, spawn,          {.v = backlightinc } },
-	{ MODKEY,             			XK_F5, spawn,          {.v = backlightdec } },	
+	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
 	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
 	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
-    { MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
+	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
+	// toggles
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
+	{ MODKEY,			    		XK_space,  togglefloating, {0} },
+	{ MODKEY|ShiftMask,           	XK_space,  togglecanfocusfloating,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	{ MODKEY,                       XK_x,      focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_z,      focusstack,     {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_s,      incnmaster,     {.i = +1 } },
-	{ MODKEY|ControlMask,           XK_q,      incnmaster,     {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_s,      rotatestack,    {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_q,      rotatestack,    {.i = -1 } },
+	// modify Layout
+	{ MODKEY,                       XK_a,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,           	XK_w,      incnmaster,     {.i = +1 } },
+	{ MODKEY|ShiftMask,           	XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,             			XK_w,     rotatestack,    {.i = +1 } },
+	{ MODKEY,             			XK_d,     rotatestack,    {.i = -1 } },
+	// modify layout size
 	{ MODKEY,                       XK_q,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_s,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
+	// set layouts 
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,			    XK_space,  togglefloating, {0} },
-	{ MODKEY|ControlMask,                       XK_f,      togglecanfocusfloating,   {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	{ MODKEY,                       XK_z,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_x, focusmon,       {.i = +1 } },
-	{ MODKEY|ControlMask,             XK_z,  tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,             XK_x,  tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_e,  setlayout,      {0} },	
+	// shift monitors
+	{ MODKEY|ShiftMask,             XK_i,  tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,  tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_i,  focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_j, focusmon,       {.i = +1 } },
+	// tags
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -132,7 +136,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	// quit
 	{ MODKEY|ShiftMask,             XK_Escape,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 };
 
 /* button definitions */
@@ -141,7 +148,6 @@ static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
