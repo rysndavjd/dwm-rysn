@@ -47,9 +47,9 @@ clean:
 
 release: clean
 	mkdir -p dwm-rysn-${VERSION}
-	cp -R LICENSE Makefile README config-*.h config.mk patchs dwm-scripts\
+	cp -R LICENSE Makefile README config-*.h config.mk patchs dwm-addons\
 		drw.h util.h ${DWM_SRC} ${CPPTIME_SRC} dwm.png transient.c\
-		link.sh legacy dwm-rysn-${VERSION}
+		link.sh legacy dwm-rysn.desktop dwm-rysn-${VERSION}
 	tar -cf dwm-rysn-${VERSION}.tar dwm-rysn-${VERSION}
 	gzip dwm-rysn-${VERSION}.tar
 	rm -rf dwm-rysn-${VERSION}
