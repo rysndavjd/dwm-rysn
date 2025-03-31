@@ -7,6 +7,7 @@ DWM_SRC = drw.c dwm.c util.c
 DWM_OBJ = ${DWM_SRC:.c=.o}
 CPPTIME_SRC = cpptime.cpp
 
+
 all: options dwm
 
 options:
@@ -16,15 +17,21 @@ options:
 	@echo "CXX      = ${CXX}"
 	@echo ""
 	@echo dwm-rysn build options:
+	@echo "CONFIG   = ${CONFIG}"
 	@echo "CFLAGS   = ${CFLAGS}"
 	@echo "LDFLAGS  = ${DWM_LDFLAGS}"
 	@echo "CC       = ${CC}"
 	@echo ""
 
+dwmconfig:
+	@if [ ! -e ./config.h ] ; then\
+		ln -srf config-${CONFIG}.h ./config.h;\
+	fi
+
 .c.o:
 	${CC} -c ${CFLAGS} $<
 
-${DWM_OBJ}: config.mk
+${DWM_OBJ}: config.mk dwmconfig
 
 cpptime:
 	${CXX} -o $@ ${CPPTIME_SRC} ${CXXFLAGS} ${CPPTIME_LDFLAGS}
@@ -36,6 +43,7 @@ dwm: ${DWM_OBJ} cpptime
 clean:
 	rm -f cpptime 
 	rm -f dwm ${DWM_OBJ} dwm-rysn-${VERSION}.tar.gz
+	rm -f config.h
 
 release: clean
 	mkdir -p dwm-rysn-${VERSION}
@@ -51,7 +59,10 @@ install: all
 	cp -f dwm ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn
-	cp -fr dwm-scripts/* ${DESTDIR}${PREFIX}/share/dwm-rysn
+	cp -fr dwm-addons/wallpapers ${DESTDIR}${PREFIX}/share/dwm-rysn
+	cp -fr dwm-addons/scripts/* ${DESTDIR}${PREFIX}/share/dwm-rysn
+	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg
+	cp -fr dwm-addons/startupcfg/${CONFIG}/* ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg
 	cp -f cpptime ${DESTDIR}${PREFIX}/share/dwm-rysn/cpptime
 	chmod 755 ${DESTDIR}${PREFIX}/share/dwm-rysn/* -R
 
