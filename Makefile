@@ -8,7 +8,7 @@ DWM_OBJ = ${DWM_SRC:.c=.o}
 CPPTIME_SRC = cpptime.cpp
 
 
-all: options dwm
+all: options dwm cpptime
 
 options:
 	@echo cpptime build options:
@@ -23,21 +23,16 @@ options:
 	@echo "CC       = ${CC}"
 	@echo ""
 
-dwmconfig:
-	@if [ ! -e ./config.h ] ; then\
-		ln -srf config-${CONFIG}.h ./config.h;\
-	fi
-
 .c.o:
 	${CC} -c ${CFLAGS} $<
 
-${DWM_OBJ}: config.mk dwmconfig
+${DWM_OBJ}: config.mk
 
 cpptime:
 	${CXX} -o $@ ${CPPTIME_SRC} ${CXXFLAGS} ${CPPTIME_LDFLAGS}
 	strip $@ 
 
-dwm: ${DWM_OBJ} cpptime
+dwm: ${DWM_OBJ}
 	${CC} -o $@ ${DWM_OBJ} ${DWM_LDFLAGS}
 
 clean:
