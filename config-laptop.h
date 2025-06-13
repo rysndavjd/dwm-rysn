@@ -96,6 +96,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
 	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
+	{ MODKEY,             			XK_l, spawn,          {.v = lock } },
 	{ MODKEY,             			XK_F7, spawn,          {.v = extdisplay } },	
 	{ MODKEY,             			XK_F6, spawn,          {.v = backlightinc } },		
 	{ MODKEY,             			XK_F5, spawn,          {.v = backlightdec } },

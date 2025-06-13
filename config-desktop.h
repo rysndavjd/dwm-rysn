@@ -92,6 +92,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
 	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
+	{ MODKEY,             			XK_l, spawn,          {.v = lock } },
 	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
 	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },

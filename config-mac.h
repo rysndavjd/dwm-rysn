@@ -100,6 +100,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_F11, spawn,          {.v = volumedec } },		
 	{ MODKEY,             			XK_F10, spawn,          {.v = volumemute } },
 	{ MODKEY,             			XK_F3, spawn,          {.v = lock } },
+	{ MODKEY,             			XK_l, spawn,          {.v = lock } },
 	{ MODKEY|ShiftMask,           	XK_F2, spawn,          {.v = kbbacklightinc } },
 	{ MODKEY|ShiftMask,           	XK_F1, spawn,          {.v = kbbacklightdec } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = backlightinc } },
