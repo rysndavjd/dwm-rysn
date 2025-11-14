@@ -54,7 +54,6 @@ install: all
 	cp -f dwm ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn
-	cp -fr dwm-addons/wallpapers ${DESTDIR}${PREFIX}/share/dwm-rysn
 	cp -fr dwm-addons/scripts/* ${DESTDIR}${PREFIX}/share/dwm-rysn
 	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg
 	cp -fr dwm-addons/startupcfg/${CONFIG}/* ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg

@@ -1,7 +1,7 @@
 # The default config used will be desktop
 CONFIG="desktop"
 
-VERSION = 1.6.0
+VERSION = 1.6.1
 CPPTIME_VERSION = 0.2
 
 # paths
