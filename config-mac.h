@@ -25,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"sh", "-c", "feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*", NULL,
+	"sh", "-c", "feh --randomize --bg-fill /usr/share/rysn-wallpapers/*", NULL,
 	"/usr/share/dwm-rysn/audio.sh", NULL,
 	"/usr/share/dwm-rysn/polkit.sh", NULL,
 	"/usr/bin/nm-applet", NULL,
@@ -105,7 +105,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,           	XK_F1, spawn,          {.v = kbbacklightdec } },	
 	{ MODKEY,             			XK_F2, spawn,          {.v = backlightinc } },
 	{ MODKEY,             			XK_F1, spawn,          {.v = backlightdec } },	
-	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/dwm-rysn/wallpapers/*")},
+	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/rysn-wallpapers/*")},
 	// toggles
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,			    		XK_space,  togglefloating, {0} },
