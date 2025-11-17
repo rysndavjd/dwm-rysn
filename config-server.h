@@ -84,7 +84,7 @@ static const Key keys[] = {
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
 	{ MODKEY,             			XK_l, spawn,          {.v = lock } },
-	{ MODKEY|ShiftMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/rysn-wallpapers/*")},
+	{ MODKEY|ControlMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/rysn-wallpapers/*")},
 	// toggles
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,			    		XK_space,  togglefloating, {0} },
