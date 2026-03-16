@@ -38,7 +38,6 @@ dwm: ${DWM_OBJ}
 clean:
 	rm -f cpptime 
 	rm -f dwm ${DWM_OBJ} dwm-rysn-${VERSION}.tar.gz
-	rm -f config.h
 
 release: clean
 	mkdir -p dwm-rysn-${VERSION}
