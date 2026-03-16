@@ -52,12 +52,6 @@ install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-rysn
-	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn
-	cp -fr dwm-addons/scripts/* ${DESTDIR}${PREFIX}/share/dwm-rysn
-	mkdir -p ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg
-	cp -fr dwm-addons/startupcfg/${CONFIG}/* ${DESTDIR}${PREFIX}/share/dwm-rysn/startupcfg
-	cp -f cpptime ${DESTDIR}${PREFIX}/share/dwm-rysn/cpptime
-	chmod 755 ${DESTDIR}${PREFIX}/share/dwm-rysn/* -R
 
 uninstall:
 	rm -fr ${DESTDIR}${PREFIX}/bin/dwm\
