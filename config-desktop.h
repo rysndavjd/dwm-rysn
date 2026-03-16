@@ -2,7 +2,7 @@
 //Desktop
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 1;    /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
@@ -45,8 +45,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     iscentered   isfloating*/
 	{ "Gimp",     NULL,       NULL,       0,            0,           1},
-	{ "LibreWolf",NULL,       NULL,       1 << 1,       0,           0},
-	{ "firefox",NULL,       NULL,       1 << 1,       0,           0},
+	{ "librewolf",NULL,       NULL,       1 << 1,       0,           0},
+	{ "firefox",  NULL,       NULL,       1 << 1,       0,           0},
 	{ "Code",     NULL,       NULL,       1 << 2,       0,           0},
 };
 
@@ -87,42 +87,48 @@ static const char *volumemute[] = { "pactl", "set-sink-mute", "@DEFAULT_SINK@", 
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	// Spawn functions
+	
+	// External calls
 	{ MODKEY,                       XK_r,      spawn,          {.v = roficmd } },
 	{ MODKEY,             			XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,             			XK_Print, spawn,          {.v = flameshot } },
-	{ MODKEY,             			XK_F10, spawn,          {.v = lock } },
-	{ MODKEY,             			XK_l, spawn,          {.v = lock } },
-	{ MODKEY,             			XK_F3, spawn,          {.v = volumeinc } },	
-	{ MODKEY,             			XK_F2, spawn,          {.v = volumedec } },		
-	{ MODKEY,             			XK_F1, spawn,          {.v = volumemute } },
-	{ MODKEY|ControlMask,             XK_w,  spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/rysn-wallpapers/*")},
-	// toggles
+	{ MODKEY,             			XK_Print,  spawn,          {.v = flameshot } },
+	{ MODKEY,             			XK_F10,    spawn,          {.v = lock } },
+	{ MODKEY,             			XK_l,      spawn,          {.v = lock } },
+	{ MODKEY,             			XK_F3,     spawn,          {.v = volumeinc } },	
+	{ MODKEY,             			XK_F2,     spawn,          {.v = volumedec } },		
+	{ MODKEY,             			XK_F1, 	   spawn,          {.v = volumemute } },
+	{ MODKEY|ControlMask,           XK_w,  	   spawn,          SHCMD ("feh --randomize --bg-fill /usr/share/rysn-wallpapers/*")},
+	
+	// Toggles
 	{ MODKEY,             		    XK_f,      togglefullscr,  {0} },
 	{ MODKEY,			    		XK_space,  togglefloating, {0} },
+ 	{ MODKEY|ControlMask,           XK_space,  togglealwaysontop, {0} },
 	{ MODKEY|ShiftMask,           	XK_space,  togglecanfocusfloating,   {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
-	// modify Layout
+	
+	// Modify Tiling layout
 	{ MODKEY,                       XK_a,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_x,      focusstack,     {.i = -1 } },
 	{ MODKEY|ShiftMask,           	XK_w,      incnmaster,     {.i = +1 } },
 	{ MODKEY|ShiftMask,           	XK_d,      incnmaster,     {.i = -1 } },
-	{ MODKEY,             			XK_w,     rotatestack,    {.i = +1 } },
-	{ MODKEY,             			XK_d,     rotatestack,    {.i = -1 } },
-	// modify layout size
+	{ MODKEY,             			XK_w,      rotatestack,    {.i = +1 } },
+	{ MODKEY,             			XK_d,      rotatestack,    {.i = -1 } },
 	{ MODKEY,                       XK_q,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_s,      setmfact,       {.f = +0.05} },
-	// set layouts 
+
+	// Layouts 
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY|ShiftMask,             XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY|ShiftMask,             XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_e,  setlayout,      {0} },	
-	// shift monitors
-	{ MODKEY|ShiftMask,             XK_i,  tagmon,         {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_j,  tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_i,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_j, focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_e,      setlayout,      {0} },	
+
+	// Multi Monitor
+	{ MODKEY|ShiftMask,             XK_i,      tagmon,         {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_i,      focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_j,      focusmon,       {.i = +1 } },
+	
 	// tags
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -130,12 +136,13 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_4,                      3)
 	TAGKEYS(                        XK_5,                      4)
 	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	// TAGKEYS(                        XK_7,                      6)
+	// TAGKEYS(                        XK_8,                      7)
+	// TAGKEYS(                        XK_9,                      8)
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	// quit
-	{ MODKEY|ShiftMask,             XK_Escape,      quit,           {0} },
+	
+	// Kill
+	{ MODKEY|ShiftMask,             XK_Escape, quit,           {0} },
 	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 };
 
