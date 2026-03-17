@@ -1,7 +1,7 @@
 # The default config used will be desktop
-CONFIG="desktop"
+CONFIG ?= "desktop"
 
-VERSION = 1.6.2
+VERSION = 2.0.0
 CPPTIME_VERSION = 0.2
 
 # paths
@@ -28,7 +28,6 @@ LIBS = -L${X11LIB} -lX11 -lXcursor ${XINERAMALIBS} ${FREETYPELIBS}
 
 # flags
 CPPFLAGS = -D_DEFAULT_SOURCE -D_BSD_SOURCE -D_XOPEN_SOURCE=700L -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
-#CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
 CFLAGS   = -std=c99 -pedantic -Wall -Wno-deprecated-declarations -O2 ${INCS} ${CPPFLAGS}
 CXXFLAGS = -std=c++17 -Wall -Wextra -O2
 DWM_LDFLAGS  = ${LIBS}
