@@ -30,7 +30,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <X11/cursorfont.h>
 #include <X11/keysym.h>
 #include <X11/Xatom.h>
 #include <X11/Xlib.h>
@@ -80,7 +79,7 @@
 #define XEMBED_EMBEDDED_VERSION (VERSION_MAJOR << 16) | VERSION_MINOR
 
 /* enums */
-enum { CurResizeBR, CurResizeBL, CurResizeTR, CurResizeTL, CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
 enum { SchemeNorm, SchemeSel }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
@@ -1405,15 +1404,6 @@ nexttiled(Client *c)
 	return c;
 }
 
-//void
-//pop(Client *c)
-//{
-//	detach(c);
-//	attach(c);
-//	focus(c);
-//	arrange(c->mon);
-//}
-
 void
 propertynotify(XEvent *e)
 {
@@ -1922,13 +1912,9 @@ setup(void)
 	/* init cursors */
 	XcursorSetTheme(dpy, cursortheme);
 	XcursorSetDefaultSize(dpy, defaultcursorsize);
-	cursor[CurNormal] = drw_cur_create(drw, XC_left_ptr);
-	cursor[CurResize] = drw_cur_create(drw, XC_sizing);
-	cursor[CurResizeBR] = drw_cur_create(drw, XC_bottom_right_corner);
-	cursor[CurResizeBL] = drw_cur_create(drw, XC_bottom_left_corner);
-	cursor[CurResizeTR] = drw_cur_create(drw, XC_top_right_corner);
-	cursor[CurResizeTL] = drw_cur_create(drw, XC_top_left_corner);
-	cursor[CurMove] = drw_cur_create(drw, XC_fleur);
+	cursor[CurNormal] = drw_cur_create(drw, "left_ptr");
+	cursor[CurResize] = drw_cur_create(drw, "all-resize");
+	cursor[CurMove] = drw_cur_create(drw, "fleur");
 	/* init appearance */
 	scheme = ecalloc(LENGTH(colors), sizeof(Clr *));
 	for (i = 0; i < LENGTH(colors); i++)
