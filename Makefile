@@ -26,7 +26,10 @@ options:
 .c.o:
 	${CC} -c ${CFLAGS} $<
 
-${DWM_OBJ}: config.mk
+${DWM_OBJ}: config.h config.mk
+
+config.h:
+	ln -srf ./config-${CONFIG}.h ./config.h
 
 cpptime:
 	${CXX} -o $@ ${CPPTIME_SRC} ${CXXFLAGS} ${CPPTIME_LDFLAGS}
@@ -38,12 +41,13 @@ dwm: ${DWM_OBJ}
 clean:
 	rm -f cpptime 
 	rm -f dwm ${DWM_OBJ} dwm-rysn-${VERSION}.tar.gz
+	rm -f config.h
 
 release: clean
 	mkdir -p dwm-rysn-${VERSION}
-	cp -R LICENSE Makefile README config-*.h config.mk patchs dwm-addons\
+	cp -R LICENSE Makefile README config-*.h config.mk patchs addons\
 		drw.h util.h ${DWM_SRC} ${CPPTIME_SRC} dwm.png transient.c\
-		link.sh legacy dwm-rysn.desktop dwm-rysn-${VERSION}
+		dwm-rysn.desktop dwm-rysn-${VERSION}
 	tar -cf dwm-rysn-${VERSION}.tar dwm-rysn-${VERSION}
 	gzip dwm-rysn-${VERSION}.tar
 	rm -rf dwm-rysn-${VERSION}
@@ -52,9 +56,14 @@ install: all
 	mkdir -p ${DESTDIR}${PREFIX}/bin
 	cp -f dwm ${DESTDIR}${PREFIX}/bin/dwm-rysn
 	chmod 755 ${DESTDIR}${PREFIX}/bin/dwm-rysn
+	mkdir -p ${DESTDIR}/usr/share/dwm-rysn/dotfiles
+	cp -rf addons/dotfiles/${CONFIG}/* ${DESTDIR}/usr/share/dwm-rysn/dotfiles/
+	cp -f addons/scripts/* ${DESTDIR}/usr/share/dwm-rysn/
+	cp -f cpptime ${DESTDIR}/usr/share/dwm-rysn/cpptime
+	chmod 755 ${DESTDIR}/usr/share/dwm-rysn/ -R
 
 uninstall:
-	rm -fr ${DESTDIR}${PREFIX}/bin/dwm\
+	rm -fr ${DESTDIR}${PREFIX}/bin/dwm \
 		${DESTDIR}${PREFIX}/share/dwm-rysn
 
 .PHONY: all options clean release install uninstall
