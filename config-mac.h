@@ -11,10 +11,10 @@ static const int showsystray        		= 1;  /* 0 means no systray */
 static const int showbar            		= 1;  /* 0 means no bar */
 static const int topbar             		= 1;  /* 0 means bottom bar */
 static const int focusonwheel       		= 0;
-static const int user_bh            		= 5;  /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
-static const char *fonts[]          		= { "cantarell:size=30", "Symbols Nerd Font Mono:pixelsize=35" };
+static const int user_bh            		= 1;  /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const char *fonts[]          		= { "cantarell:size=20", "Symbols Nerd Font Mono:pixelsize=25" };
 static const char *cursortheme				= "Adwaita";
-static const unsigned int defaultcursorsize	= 40;
+static const unsigned int defaultcursorsize	= 30;
 static const char col_gray1[]       		= "#222222";
 static const char col_gray2[]       		= "#444444";
 static const char col_gray3[]       		= "#bbbbbb";
